@@ -30,7 +30,4 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 Route::get('tipoactividad', 'TipoActividadController@index');
-Route::get('asignaturaparalelo/iddocente/{iddocente}', 'AsignaturaParaleloController@show');
-Route::get('actividad/idasignaturaparalelo/{idasignaturaparalelo}', 'ActividadController@show');
-Route::post('actividad', 'ActividadController@store');
-Route::get('estudiante/idasignaturaparalelo/{idasignaturaparalelo}', 'ActividadController@show');
+Route::get('asignaturaparalelo/{iddocente}', 'AsignaturaParaleloController@show');
