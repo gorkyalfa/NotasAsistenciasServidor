@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\AsignaturaParalelo;
+
 class AsignaturaParaleloController extends Controller
 {
-    public function show($idAsignaturaParalelo)
+    public function show(integer $docente_id)
     {
+        // AsignaturaParalelo::where("docente_id", $docente_id);
+
         // TODO : devolver las asignaturas filtrando los datos por docente
         $object = new class
         {
