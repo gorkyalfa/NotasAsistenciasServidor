@@ -8,6 +8,10 @@ class Actividad extends Model
 {
     public function tiposActividades()
     {
-        return $this->hasOne('App\TipoActividad');
+        return $this->belongsTo('App\TipoActividad');
+    }
+    public function parcial()
+    {
+        return $this->belongsTo('App\Parcial');
     }
 }

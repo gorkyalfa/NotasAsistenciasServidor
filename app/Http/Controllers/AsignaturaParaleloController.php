@@ -2,39 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\PeriodoLectivo;
 use App\AsignaturaParalelo;
 
 class AsignaturaParaleloController extends Controller
 {
-    public function show(integer $docente_id)
+    public function show($periodo_lectivo_id, $docente_id)
     {
-        // AsignaturaParalelo::where("docente_id", $docente_id);
+        $response = AsignaturaParalelo::
+        join('asignaturas', 'asignaturas.id', 'asignatura_paralelos.asignatura_id')
+            ->join('periodo_academicos', 'periodo_academicos.id', 'asignaturas.periodo_academico_id')
+            ->join('carreras', 'carreras.id', 'periodo_academicos.carrera_id')
+            ->join('paralelos', 'paralelos.id', 'asignatura_paralelos.paralelo_id')
+            ->where('carreras.periodo_lectivo_id', $periodo_lectivo_id)
+            ->where('asignatura_paralelos.docente_id', $docente_id)
+            ->select('asignatura_paralelos.id', 'asignaturas.nombre as asignatura', 'paralelos.nombre as paralelo')
+            ->get();
 
-        // TODO : devolver las asignaturas filtrando los datos por docente
-        $object = new class
-        {
-            public $id = "1";
-            public $idParalelo = "1";
-            public $nombre = "Software Engineering";
-        };
-
-        $object1 = new class
-        {
-            public $id = "2";
-            public $idParalelo = "1";
-            public $nombre = "POO";
-        };
-
-        $object2 = new class
-        {
-            public $id = "3";
-            public $idParalelo = "1";
-            public $nombre = "Base de datos";
-        };
-
-        $asignaturasParalelo = [
-            $object, $object1, $object2
-        ];
-        return response()->json(['asignaturas' => $asignaturasParalelo], 200);
+        return response()->json(['asignaturas' => $response], 200);
     }
 }
