@@ -30,7 +30,7 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 Route::get('tipoactividad', 'TipoActividadController@index');
-Route::get('asignaturaparalelo/periodo_lectivo_id/{periodo_lectivo_id}/docente_id/{docente_id}', 'AsignaturaParaleloController@show');
-Route::get('actividad/idasignaturaparalelo/{idasignaturaparalelo}', 'ActividadController@show');
+Route::get('asignaturaparalelo/docente_id/{docente_id}', 'AsignaturaParaleloController@show');
+Route::get('actividad/asignatura_paralelo_id/{asignatura_paralelo_id}', 'ActividadController@show');
 Route::post('actividad', 'ActividadController@store');
-Route::get('estudiante/idasignaturaparalelo/{idasignaturaparalelo}', 'ActividadController@show');
+Route::get('estudiante/asignatura_paralelo_id/{asignatura_paralelo_id}', 'ActividadController@show');

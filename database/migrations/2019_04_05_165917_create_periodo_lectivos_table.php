@@ -15,6 +15,7 @@ class CreatePeriodoLectivosTable extends Migration
     {
         Schema::create('periodo_lectivos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->boolean('actual');
             $table->timestamps();
         });
     }

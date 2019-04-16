@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoActividad extends Model
 {
-    public function Actividades()
+    protected $fillable = ['nombre'];
+
+    public function actividades()
     {
         return $this->hasMany('App\Actividad');
     }

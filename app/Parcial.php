@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Parcial extends Model
 {
-    public function Actividades()
+    protected $fillable = ['nombre'];
+
+    public function actividades()
     {
         return $this->hasMany('App\Actividad');
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 class EstudianteController extends Controller
 {
-    public function show($idasignaturaparalelo)
+    public function show($asignatura_paralelo_id)
     {
         // TODO : consultar las estudiantes de la asignatura paralelo
         /*
